@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Chat App",
-  description: "Mi aplicación de chat",
+  description: "Pagina Personal de Luis Cortes",
 };
 
 export default function RootLayout({
