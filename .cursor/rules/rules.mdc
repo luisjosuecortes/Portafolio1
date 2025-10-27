@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+Always prefer simple, understandable, and interpretable code over premature optimizations. Look for documentation on how to do it, whether for libraries or existing projects.
