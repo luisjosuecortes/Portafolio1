@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header } from "@/components/header";
+import { PageWrapper } from "@/components/page-wrapper";
 
 export const metadata: Metadata = {
   title: "Chat App",
@@ -14,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        {children}
+        <PageWrapper>
+          <Header />
+          {children}
+        </PageWrapper>
       </body>
     </html>
   );
