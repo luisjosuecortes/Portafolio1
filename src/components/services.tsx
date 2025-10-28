@@ -103,8 +103,8 @@ export function Services() {
     <section
       ref={sectionRef}
       id="servicios"
-      className={`min-h-screen flex items-center justify-center px-6 py-20 bg-gray-50 transition-opacity duration-1000 relative overflow-hidden ${
-        isVisible ? "opacity-100" : "opacity-0"
+      className={`min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 bg-gray-50 transition-all duration-1000 relative overflow-hidden ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
       {/* Animación de fondo flotante */}
@@ -120,16 +120,16 @@ export function Services() {
       </div>
 
       <div className="max-w-7xl w-full relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-4">
             Mis <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">Servicios</span>
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
             Lo que puedo hacer por ti
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
               key={service.id}
@@ -144,13 +144,13 @@ export function Services() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-900/5 to-transparent rounded-full blur-2xl group-hover:from-gray-900/10 transition-colors duration-500" />
               
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-gradient-to-br from-gray-900 to-gray-700 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-900 to-gray-700 rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg mx-auto md:mx-0">
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-black transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-black transition-colors text-center md:text-left">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-sm">
+                <p className="text-gray-600 leading-relaxed text-xs sm:text-sm text-center md:text-left">
                   {service.description}
                 </p>
               </div>
@@ -158,12 +158,12 @@ export function Services() {
           ))}
         </div>
 
-        <div className="flex justify-center mt-16 animate-fade-up" style={{ animationDelay: "0.5s" }}>
+        <div className="flex justify-center mt-12 sm:mt-16 animate-fade-up" style={{ animationDelay: "0.5s" }}>
           <a 
-            href="https://instagram.com/penguinxlabs"
+            href="https://instagram.com/luiscortespenguin"
             target="_blank"
             rel="noopener noreferrer"
-            className="group bg-white border-2 border-black text-black px-10 py-5 rounded-full flex items-center gap-3 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer text-lg font-semibold"
+            className="group bg-white border-2 border-black text-black px-6 py-3 sm:px-10 sm:py-5 rounded-full flex items-center gap-2 sm:gap-3 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer text-base sm:text-lg font-semibold"
           >
             <svg
               width="22"

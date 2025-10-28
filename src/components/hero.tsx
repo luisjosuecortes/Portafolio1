@@ -1,22 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+const phrases = ["Inteligencia Artificial", "Desarrollador Web"];
 
 export function Hero() {
   const [displayedText, setDisplayedText] = useState("");
   const [opacity, setOpacity] = useState(1);
-
-  const phrases = ["Inteligencia Artificial", "Desarrollador Web"];
+  const [isVisible, setIsVisible] = useState(false);
+  const currentPhraseIndexRef = useRef(0);
+  const currentCharIndexRef = useRef(0);
 
   useEffect(() => {
-    let currentPhraseIndex = 0;
-    let currentCharIndex = 0;
+    // Animación de entrada para el hero
+    setIsVisible(true);
+    
     let timeoutId: NodeJS.Timeout;
 
     const typeText = () => {
-      if (currentCharIndex <= phrases[currentPhraseIndex].length) {
-        setDisplayedText(phrases[currentPhraseIndex].slice(0, currentCharIndex));
-        currentCharIndex++;
+      if (currentCharIndexRef.current <= phrases[currentPhraseIndexRef.current].length) {
+        setDisplayedText(phrases[currentPhraseIndexRef.current].slice(0, currentCharIndexRef.current));
+        currentCharIndexRef.current++;
         timeoutId = setTimeout(typeText, 100);
       } else {
         // Cuando termine de escribir, esperar 2 segundos, hacer fade out
@@ -24,8 +28,8 @@ export function Hero() {
           setOpacity(0);
           timeoutId = setTimeout(() => {
             // Cambiar a la siguiente frase
-            currentPhraseIndex = (currentPhraseIndex + 1) % 2;
-            currentCharIndex = 0;
+            currentPhraseIndexRef.current = (currentPhraseIndexRef.current + 1) % 2;
+            currentCharIndexRef.current = 0;
             setDisplayedText("");
             setOpacity(1);
             // Empezar a escribir la nueva frase
@@ -35,7 +39,10 @@ export function Hero() {
       }
     };
 
-    typeText();
+    // Esperar un poco antes de empezar a escribir
+    timeoutId = setTimeout(() => {
+      typeText();
+    }, 500);
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
@@ -43,21 +50,23 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center justify-center px-6 py-20">
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="inicio" className={`min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 pt-32 sm:pt-20 transition-all duration-1000 ${
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}>
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
         {/* Columna izquierda - Información */}
-        <div className="space-y-8 animate-fade-up">
-          <div className="space-y-4">
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight transform transition-all duration-700 hover:scale-105">
+        <div className="space-y-6 sm:space-y-8 animate-fade-up text-center lg:text-left">
+          <div className="space-y-3 sm:space-y-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight transform transition-all duration-700 hover:scale-105">
               Hola, soy{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 animate-pulse">
                 Luis
               </span>
             </h1>
 
-            <div className="relative animate-fade-up-delay-200">
+            <div className="relative animate-fade-up-delay-200 flex justify-center lg:justify-start">
               <div
-                className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-mono font-bold text-gray-900 bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-3 sm:px-5 sm:py-3 md:px-6 md:py-4 rounded-lg border border-gray-200 shadow-sm transition-opacity duration-300 inline-block whitespace-nowrap"
+                className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-gray-900 bg-gradient-to-r from-gray-50 to-gray-100 px-3 py-2 sm:px-4 sm:py-3 md:px-6 md:py-4 rounded-lg border border-gray-200 shadow-sm transition-opacity duration-300 inline-block whitespace-nowrap"
                 style={{ opacity }}
               >
                 {displayedText}
@@ -66,22 +75,22 @@ export function Hero() {
             </div>
           </div>
 
-          <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl font-light tracking-wide transform transition-all duration-700 hover:translate-x-2 hover:text-gray-900">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light tracking-wide transform transition-all duration-700 hover:translate-x-2 hover:text-gray-900">
             Soy estudiante de <span className="font-semibold text-gray-900 bg-gradient-to-r from-gray-100 to-transparent px-2 py-1 rounded">Inteligencia Artificial</span> y desarrollador web. Me
             apasiona crear, aprender y llevar mis ideas a la realidad a través
             de la programación y creatividad.
           </p>
 
-          <div className="flex gap-4 animate-fade-up-delay-400">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-up-delay-400 justify-center lg:justify-start">
             <a 
-              href="https://instagram.com/penguinxlabs"
+              href="https://instagram.com/luiscortespenguin"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white border-2 border-black text-black px-8 py-4 rounded-full flex items-center gap-3 hover:bg-black hover:text-white hover:scale-110 hover:rotate-1 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer"
+              className="group bg-white border-2 border-black text-black px-6 py-3 sm:px-8 sm:py-4 rounded-full flex items-center justify-center gap-2 sm:gap-3 hover:bg-black hover:text-white hover:scale-105 hover:rotate-1 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer text-sm sm:text-base"
             >
               <svg
-                width="20"
-                height="20"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -99,11 +108,11 @@ export function Hero() {
               href="/cv.pdf" 
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-black text-white px-8 py-4 rounded-full flex items-center gap-3 hover:bg-gray-800 hover:scale-110 hover:rotate-1 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer"
+              className="group bg-black text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full flex items-center justify-center gap-2 sm:gap-3 hover:bg-gray-800 hover:scale-105 hover:rotate-1 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer text-sm sm:text-base"
             >
             <svg
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -120,13 +129,13 @@ export function Hero() {
           </a>
           </div>
 
-          <div className="border-t border-gray-200 pt-8 transform transition-all duration-500 hover:border-gray-300">
-            <p className="text-xs font-semibold text-gray-500 mb-3 tracking-widest uppercase hover:text-gray-900 transition-colors duration-300">
+          <div className="border-t border-gray-200 pt-6 sm:pt-8 transform transition-all duration-500 hover:border-gray-300">
+            <p className="text-xs font-semibold text-gray-500 mb-3 tracking-widest uppercase hover:text-gray-900 transition-colors duration-300 text-center lg:text-left">
               Sígueme
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center lg:justify-start">
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/luiscortespenguin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 transition-all hover:scale-125 hover:rotate-12 transform duration-300"
@@ -141,7 +150,7 @@ export function Hero() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/luis-cort%C3%A9s-penguin/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-blue-600 transition-all hover:scale-125 hover:rotate-12 transform duration-300"
@@ -156,7 +165,7 @@ export function Hero() {
                 </svg>
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/luisjosuecortes"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-gray-900 transition-all hover:scale-125 hover:rotate-12 transform duration-300"
@@ -176,13 +185,13 @@ export function Hero() {
 
         {/* Columna derecha - Imagen */}
         <div className="flex justify-center lg:justify-end animate-fade-up-delay-600">
-          <div className="group relative w-[22rem] h-[22rem] lg:w-[32rem] lg:h-[32rem] xl:w-[36rem] xl:h-[36rem]">
+          <div className="group relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[32rem] lg:h-[32rem] xl:w-[36rem] xl:h-[36rem]">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-300 border border-gray-100" />
-            <div className="absolute inset-4 rounded-2xl overflow-hidden pointer-events-none">
+            <div className="absolute inset-3 sm:inset-4 rounded-2xl overflow-hidden pointer-events-none">
               <img
                 src="/me.jpg"
                 alt="Luis"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>

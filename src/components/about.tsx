@@ -31,8 +31,8 @@ export function About() {
     <section
       ref={sectionRef}
       id="acerca"
-      className={`min-h-screen flex items-center justify-center px-6 py-20 bg-gray-50 transition-opacity duration-1000 ${
-        isVisible ? "opacity-100" : "opacity-0"
+      className={`min-h-screen flex items-center justify-center px-6 py-20 bg-gray-50 transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

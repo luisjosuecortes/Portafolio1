@@ -1,11 +1,11 @@
 export function Footer() {
   return (
-    <footer className="bg-black text-white py-16 px-6">
+    <footer className="bg-black text-white py-12 sm:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
           {/* Columna 1 - Información */}
-          <div>
-            <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          <div className="text-center sm:text-left">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
               Luis
             </h3>
             <p className="text-gray-400 leading-relaxed text-sm">
@@ -15,11 +15,11 @@ export function Footer() {
           </div>
 
           {/* Columna 2 - Enlaces rápidos */}
-          <div>
-            <h4 className="text-xs font-semibold text-gray-500 mb-5 tracking-widest uppercase">
+          <div className="text-center sm:text-left">
+            <h4 className="text-xs font-semibold text-gray-500 mb-4 sm:mb-5 tracking-widest uppercase">
               Enlaces rápidos
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               <li>
                 <a
                   href="#inicio"
@@ -48,13 +48,13 @@ export function Footer() {
           </div>
 
           {/* Columna 3 - Redes sociales */}
-          <div>
-            <h4 className="text-xs font-semibold text-gray-500 mb-5 tracking-widest uppercase">
+          <div className="text-center sm:text-left">
+            <h4 className="text-xs font-semibold text-gray-500 mb-4 sm:mb-5 tracking-widest uppercase">
               Sígueme
             </h4>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center sm:justify-start">
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/luiscortespenguin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-pink-500 transition-all hover:scale-110 transform duration-200"
@@ -69,7 +69,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/luis-cort%C3%A9s-penguin/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-500 transition-all hover:scale-110 transform duration-200"
@@ -84,7 +84,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/luisjosuecortes"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-all hover:scale-110 transform duration-200"
@@ -103,8 +103,8 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-900 pt-8">
-          <p className="text-gray-500 text-center text-sm">
+        <div className="border-t border-gray-900 pt-6 sm:pt-8">
+          <p className="text-gray-500 text-center text-xs sm:text-sm">
             © {new Date().getFullYear()} Penguin Labs. Todos los derechos reservados.
           </p>
         </div>

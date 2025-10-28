@@ -64,21 +64,21 @@ export function Projects() {
     <section
       ref={sectionRef}
       id="proyectos"
-      className={`min-h-screen flex items-center justify-center px-6 py-20 bg-white transition-opacity duration-1000 ${
-        isVisible ? "opacity-100" : "opacity-0"
+      className={`min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 bg-white transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
       <div className="max-w-7xl w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-4">
             Mis <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">Proyectos</span>
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
             Algunos de los proyectos en los que he trabajado
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <a
               key={project.id}
