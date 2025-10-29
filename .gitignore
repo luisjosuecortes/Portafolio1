@@ -1,3 +1,25 @@
+# Dependencias
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# SO / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Entornos
+.env
+.env.*
+
+# Vercel
+.vercel/
+
+# Cursor
+.cursor/
+.cursorignore
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
