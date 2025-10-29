@@ -2,6 +2,8 @@
 
 Guía breve para clonar, instalar y ejecutar el proyecto, cualquier duda sigueme en Instagram. 😁
 
+[![Instagram](https://img.shields.io/badge/Instagram-@luiscortespenguin-E4405F?logo=instagram&logoColor=white)](https://instagram.com/luiscortespenguin)
+
 ## Requisitos
 - Node.js 18+ (recomendado 20)
 - npm 9+ o pnpm/yarn
